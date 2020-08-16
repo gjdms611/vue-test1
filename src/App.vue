@@ -1,3 +1,5 @@
+<!-- App.vue -->
+
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
@@ -34,23 +36,38 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld />
+      <TodoHeader />
+      <TodoTitle />
+      <TodoInput />
+      <TodoController />
+      <TodoList />
+      <TodoFooter />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import TodoHeader from "./components/TodoHeader";
+import TodoTitle from "./components/TodoTitle";
+import TodoInput from "./components/TodoInput";
+import TodoController from "./components/TodoController";
+import TodoList from "./components/TodoList";
+import TodoFooter from "./components/TodoFooter";
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld
+    TodoHeader,
+    TodoTitle,
+    TodoInput,
+    TodoController,
+    TodoList,
+    TodoFooter,
   },
 
   data: () => ({
     //
-  })
+  }),
 };
 </script>
