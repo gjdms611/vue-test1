@@ -1,13 +1,9 @@
 <template>
-  
+  <footer class="footer">Made by nana with 💛</footer>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

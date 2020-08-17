@@ -1,3 +1,7 @@
+# Project Description
+연습 프로젝트.   
+[이 링크](https://nykim.work/74?category=785004)에 있는 프로젝트를 따라하며 vuetify를 적용하며 약간 변형하면서 이해하고 있습니다.   
+
 # vue-test1
 
 ## Project setup
