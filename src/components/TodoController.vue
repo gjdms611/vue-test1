@@ -8,13 +8,20 @@
         <option value="name-asc">Name Ascending</option>
         <option value="name-desc">Name Descending</option>
       </select>
+      <v-btn class="clear" @click="clearTodo">Clear All</v-btn>
     </div>
     <button class="clear">Clear All</button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    clearTodo() {
+      this.$emit("clearAll");
+    }
+  }
+};
 </script>
 
 <style></style>

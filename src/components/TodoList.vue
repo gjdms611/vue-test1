@@ -1,40 +1,59 @@
 <template>
   <div>
     <v-card class="mx-auto" max-width="344" outlined>
-      <v-container fluid>
-        <v-row class="card--list">
-          <v-col cols="4">
-            <v-checkbox v-model="checkbox1" :label="`Smile! :)`"></v-checkbox
-          ></v-col>
-          <v-col cols="4"
-            ><v-card-text>5/26</v-card-text><v-button>x</v-button></v-col
+      <v-list-item two-line class="list">
+        <v-list-item-content
+          class="list__item"
+          v-for="(todoItem, index) in propsdata"
+          :key="todoItem.item"
+        >
+          <v-checkbox
+            type="checkbox"
+            :id="todoItem.item"
+            :checked="todoItem.completed === true"
+            @change="toggleComplete(todoItem)"
+          />
+          <label :for="todoItem.item" class="list__label">
+            <p class="list__text">{{ todoItem.item }}</p>
+          </label>
+          <p class="list__date">{{ todoItem.date }}</p>
+          <v-btn
+            class="list__delete"
+            Delete
+            @click="removeTodo(todoItem, index)"
           >
-        </v-row>
-      </v-container>
+            <div class="blind">Delete</div>
+          </v-btn>
+        </v-list-item-content>
+      </v-list-item>
     </v-card>
-
-    <ul class="list">
-      <li class="list__item">
-        <input type="checkbox" id="list-item-1" />
-        <label for="list-item-1">
-          <p class="list__text">Smile! :)</p>
-        </label>
-        <p class="list__date">5/26</p>
-        <button class="list__delete">Delete</button>
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      checkbox1: true,
-      checkbox2: false,
-    };
+  props: ["propsdata"],
+  data: () => ({
+    //
+  }),
+  created() {
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
+          this.todoItems.push(
+            JSON.parse(localStorage.getItem(localStorage.key(i)))
+          );
+        }
+      }
+    }
   },
+  methods: {
+    toggleComplete(todoItem) {
+      this.$emit("toggleItem", todoItem);
+    },
+    removeTodo(todoItem, index) {
+      this.$emit("removeItem", todoItem, index);
+    }
+  }
 };
 </script>
-
-<style></style>
